@@ -1,4 +1,3 @@
-AWSTemplateFormatVersion: 2010-09-09
 Description: CD12352 - Infrastructure as Code Project - Network - Including VPC, Subnets, Route, InternetGateway, NatGateway
 
 Parameters: 
