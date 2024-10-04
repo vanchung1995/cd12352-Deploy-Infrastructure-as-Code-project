@@ -101,7 +101,7 @@ Resources:
 
   NatGatewayEIPA:
     Type: AWS::EC2::EIP
-    DependsOn: AttachGateway
+    DependsOn: AttachInternetGateway
     Properties:
       Domain: vpc
       Tags: 
@@ -110,7 +110,7 @@ Resources:
 
   NatGatewayEIPB:
     Type: AWS::EC2::EIP
-    DependsOn: AttachGateway
+    DependsOn: AttachInternetGateway
     Properties:
       Domain: vpc
       Tags: 
@@ -145,7 +145,7 @@ Resources:
 
   PublicRoute:
     Type: AWS::EC2::Route
-    DependsOn: AttachGateway
+    DependsOn: AttachInternetGateway
     Properties:
       RouteTableId: !Ref PublicRouteTable
       DestinationCidrBlock: 0.0.0.0/0
