@@ -1,14 +1,47 @@
-Description: CD12352 - Infrastructure as Code Project - Udagram
+Description: CD12352 - Infrastructure as Code Project - Web Tier
 
-Parameters:
-  # Add your parameters here
+Parameters: 
+  ApplicationName:
+    Description: Name of Application
+    Type: String
+    Default: Udagram-Simple-Application
 
-Resources:
-  # Add your resources here
-  # We include a portion of the LaunchTemplate resource so you can use the UserData.
+Resources: 
+
+  EC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: EC2SecurityGroupName
+      GroupDescription: Allow Load Balancer Access HTTP
+      VpcId: !Import ${ApplicationName}-VPCID
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: name
+          Value: !Ref ApplicationName
+
+  LoadBalancerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: LoadBalancerSecurityGroupName
+      GroupDescription: Allow Access HTTP to LoadBalancer From Outside
+      VpcId: !Import ${ApplicationName}-VPCID
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: name
+          Value: !Ref ApplicationName
+
   WebAppLaunchTemplate:
     Type: AWS::EC2::LaunchTemplate
     Properties: 
+      LaunchTemplateName: WebAppLaunchTemplate-Udacity
       LaunchTemplateData:
         UserData:
           Fn::Base64: |
