@@ -213,12 +213,12 @@ Outputs:
   
   PrivateSubnets:
     Description: CIDR Block Of Private Subnets
-    Value: !Join [",", [!Ref PrivateSubnetAZA, !Ref PrivateSubnetAZB]]
+    Value: !Join [",", [!Ref PrivateSubnetA, !Ref PrivateSubnetB]]
     Export: 
       Name: !Sub ${ApplicationName}-PrivateSubnets
 
   PublicSubnets:
     Description: CIDR Block Of Public Subnets
-    Value: !Join [",", [!Ref PublicSubnetAZA, !Ref PublicSubnetAZB]]
+    Value: !Join [",", [!Ref PublicSubnetA, !Ref PublicSubnetB]]
     Export: 
       Name: !Sub ${ApplicationName}-PublicSubnets
