@@ -68,7 +68,7 @@ Resources:
   PrivateSubnetA:
     Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone: !Select [1, !GetAZs '']
+      AvailabilityZone: !Select [0, !GetAZs '']
       MapPublicIpOnLaunch: false
       VpcId: !Ref VPC
       CidrBlock: !Ref PrivateSubnetAZA
@@ -79,7 +79,7 @@ Resources:
   PublicSubnetB:
     Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone: !Select [0, !GetAZs '']
+      AvailabilityZone: !Select [1, !GetAZs '']
       VpcId: !Ref VPC
       MapPublicIpOnLaunch: true
       CidrBlock: !Ref PublicSubnetAZB
