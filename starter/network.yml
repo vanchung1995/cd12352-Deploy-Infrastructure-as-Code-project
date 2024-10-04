@@ -218,7 +218,7 @@ Outputs:
       Name: !Sub ${ApplicationName}-PrivateSubnets
 
   PublicSubnets:
-    Description: CIDR Block Of VPC
+    Description: CIDR Block Of Public Subnets
     Value: !Join [",", [!Ref PublicSubnetAZA, !Ref PublicSubnetAZB]]
     Export: 
       Name: !Sub ${ApplicationName}-PublicSubnets
