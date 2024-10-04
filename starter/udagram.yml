@@ -168,6 +168,7 @@ Resources:
       Tags:
         - Key: name
           Value: AutoScalingGroup
+          PropagateAtLaunch: true
 
   LoadBalancer:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
