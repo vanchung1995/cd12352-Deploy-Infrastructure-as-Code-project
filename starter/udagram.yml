@@ -6,6 +6,11 @@ Parameters:
     Type: String
     Default: Udagram-Simple-Application
 
+  S3BucketName:
+    Description: Name of S3 Bucket
+    Type: String
+    Default: udacity-udagram-chungvv3-rondamword
+
 Resources:
   LoadBalancerSecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -47,7 +52,7 @@ Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub "${ApplicationName}-chungvv3-rondamword"
+      BucketName: !Ref S3BucketName
       AccessControl: Private
       BucketEncryption:
         ServerSideEncryptionConfiguration:
@@ -135,12 +140,14 @@ Resources:
       HealthCheckPath: "/"
       HealthCheckPort: 80
       HealthCheckProtocol: HTTP
-      HealthCheckTimeoutSeconds: 10
+      HealthCheckTimeoutSeconds: 8
       HealthyThresholdCount: 3
       Tags: 
         - Key: name
           Value: WebAppTargetGroup
       UnhealthyThresholdCount: 5
+      Protocol: HTTP
+      Port: 80
       VpcId:
         Fn::ImportValue: !Sub "${ApplicationName}-VPCID"
 
