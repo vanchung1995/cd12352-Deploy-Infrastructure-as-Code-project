@@ -207,7 +207,7 @@ Resources:
 Outputs:
   VPCID:
     Description: CIDR Block Of VPC
-    Value: !Ref ApplicationName
+    Value: !Ref VPC
     Export: 
       Name: !Sub ${ApplicationName}-VPCID
   
