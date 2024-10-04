@@ -13,7 +13,7 @@ Resources:
     Properties:
       GroupName: EC2SecurityGroupName
       GroupDescription: Allow Load Balancer Access HTTP
-      VpcId: !ImportValue ${ApplicationName}-VPCID
+      VpcId: !ImportValue !Sub ${ApplicationName}-VPCID
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
@@ -28,7 +28,7 @@ Resources:
     Properties:
       GroupName: LoadBalancerSecurityGroupName
       GroupDescription: Allow Access HTTP to LoadBalancer From Outside
-      VpcId: !ImportValue ${ApplicationName}-VPCID
+      VpcId: !ImportValue !Sub ${ApplicationName}-VPCID
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
