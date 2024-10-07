@@ -44,6 +44,15 @@ No tests required for this project.
    
 6.  Submit your solution as a GitHub link or a zipped file containing the diagram image, CloudFormation yml and json files, automation scripts and README file.
 
+## Run Project:
+1. Delete all stack if exists: ./delete-stack [all/web/network]
+   
+2. Start network first: ./run-network.sh: it will create network and output params
+
+3. Start web after created network: ./run-udagram.sh
+
+4. Get URL of loadbalancer on Output session of web stack and get the result
+
 ## License
 
 [License](LICENSE.txt)
