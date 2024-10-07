@@ -26,7 +26,7 @@ Resources:
           CidrIp: 0.0.0.0/0
       Tags:
         - Key: name
-          Value: !Ref ApplicationName
+          Value: !Sub "${ApplicationName}-LB-SG"
 
   EC2SecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -47,7 +47,7 @@ Resources:
           CidrIp: 0.0.0.0/0
       Tags:
         - Key: name
-          Value: !Ref ApplicationName
+          Value: !Sub "${ApplicationName}-EC2-SG"
 
   S3Bucket:
     Type: AWS::S3::Bucket
@@ -73,7 +73,7 @@ Resources:
         RestrictPublicBuckets: true
       Tags: 
         - Key: name
-          Value: s3
+          Value: !Sub "${ApplicationName}-S3-Bucket"
 
   WebAppInstanceRole:
     Type: AWS::IAM::Role
@@ -102,7 +102,7 @@ Resources:
               Resource: !Sub "${S3Bucket.Arn}/*"
       Tags: 
         - Key: name
-          Value: role
+          Value: !Sub "${ApplicationName}-WEB-ROLE"
 
   WebEC2InstanceProfile:
     Type: AWS::IAM::InstanceProfile
@@ -170,7 +170,7 @@ Resources:
       - Ref: WebAppTargetGroup
       Tags:
         - Key: name
-          Value: AutoScalingGroup
+          Value: !Sub "${ApplicationName}-ASG"
           PropagateAtLaunch: true
 
   LoadBalancer:
