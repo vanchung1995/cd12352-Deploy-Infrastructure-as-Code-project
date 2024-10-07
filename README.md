@@ -28,7 +28,8 @@ git clone git@github.com:udacity/-cd12352-Deploy-Infrastructure-as-Code-project.
 
 ## Testing
 
-No tests required for this project.
+URL for test: 	
+http://udacit-LoadB-tfVST5XMhUqF-1069044629.us-east-1.elb.amazonaws.com
 
 ## Project Instructions
 
