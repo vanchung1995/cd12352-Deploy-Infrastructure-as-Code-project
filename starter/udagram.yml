@@ -206,7 +206,7 @@ Resources:
         Priority: 1
 
 Outputs:
-  LogicalID:
+  LoadBalancerURL:
     Description: URL Of LoadBalancer
     Value: !GetAtt LoadBalancer.DNSName
     Export: 
