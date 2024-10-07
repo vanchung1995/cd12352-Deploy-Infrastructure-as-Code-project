@@ -131,7 +131,10 @@ Resources:
             #!/bin/bash
             apt-get update -y
             sudo apt-get install nginx -y
-            service nginx start
+            systemctl start nginx
+            systemctl enable nginx
+            echo "<h3> It works! Udagram, Udacity! </h3>" | tee /var/www/html/index.html
+            chmod 644 /var/www/html/index.html
 
   WebAppTargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
@@ -208,6 +211,6 @@ Resources:
 Outputs:
   LoadBalancerURL:
     Description: URL Of LoadBalancer
-    Value: !GetAtt LoadBalancer.DNSName
+    Value: !Sub "http://${LoadBalancer.DNSName}"
     Export: 
       Name: !Sub "${ApplicationName}-Udagram-URL"
